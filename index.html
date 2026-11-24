@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ichimei Online</title>
+<meta name="description" content="Ichimei Online: MMORPG 3D de uma torre com cem andares, onde você tem uma vida só. Baixe para Android e consulte a wiki.">
+<link rel="icon" href="img/icone192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Nunito+Sans:opsz,wght@6..12,400;6..12,700;6..12,800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0b0c15;--bg2:#121423;--card:#171a2b;--card2:#1d2034;--line:#2a2e47;--text:#e9e4d6;--muted:#a3a1b5;--gold:#f2c46a;--gold2:#c9913c;--blue:#8ab4ff;--cyan:#7fd3e6;--red:#e5484d}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:'Nunito Sans',system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:var(--gold);text-decoration:none}a:hover{text-decoration:underline}
+.wrap{max-width:1120px;margin:0 auto;padding:0 22px}
+h1,h2,h3,h4{font-family:'Cinzel',serif;letter-spacing:.02em;margin:0;line-height:1.2}
+/* topo */
+header.top{position:sticky;top:0;z-index:20;background:#0b0c15ee;backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.top .wrap{display:flex;align-items:center;gap:18px;height:62px}
+.brand{display:flex;align-items:center;gap:10px;font-family:'Cinzel',serif;font-weight:800;color:var(--text);font-size:18px;white-space:nowrap}
+.brand:hover{text-decoration:none}.brand img{width:34px;height:34px;border-radius:8px}
+nav.main{display:flex;gap:4px;margin-left:auto;align-items:center}
+nav.main a{color:var(--muted);padding:8px 12px;border-radius:8px;font-size:15px;font-weight:700}
+nav.main a:hover,nav.main a.on{color:var(--text);background:#ffffff0d;text-decoration:none}
+nav.main a.dl{color:#1a1208;background:linear-gradient(180deg,var(--gold),var(--gold2))}
+@media (max-width:620px){nav.main a.hide-s{display:none}}
+/* botões */
+.btn{display:inline-flex;align-items:center;gap:10px;padding:13px 22px;border-radius:10px;font-weight:800;font-size:16px;border:1px solid transparent;transition:transform .12s;cursor:pointer;color:var(--text)}
+.btn:hover{transform:translateY(-1px);text-decoration:none}
+.btn.primary{background:linear-gradient(180deg,var(--gold),var(--gold2));color:#1a1208}
+.btn.ghost{border-color:var(--line);background:#ffffff08}
+.btn svg{width:20px;height:20px}
+/* início */
+.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+.hero .bgimg{position:absolute;inset:0;background:url(img/torre.jpg) center/cover;opacity:.28}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#0b0c1566,#0b0c15 94%)}
+.hero .wrap{position:relative;z-index:1;display:grid;grid-template-columns:auto 1fr;gap:44px;align-items:center;padding-top:84px;padding-bottom:84px}
+.hero .icon{width:220px;height:220px;border-radius:48px;box-shadow:0 24px 70px #000b,0 0 0 1px #8ab4ff33}
+.eyebrow{color:var(--gold);font-weight:800;font-size:13px;letter-spacing:.16em;text-transform:uppercase}
+.hero h1{font-size:clamp(40px,6vw,66px);font-weight:800;margin:10px 0 14px}
+.hero p.lead{font-size:20px;color:#d8d3c4;max-width:580px;margin:0 0 28px}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.meta{color:var(--muted);font-size:14px;margin-top:14px}
+@media (max-width:780px){.hero .wrap{grid-template-columns:1fr;text-align:center;padding:52px 22px}.hero .icon{margin:0 auto;width:160px;height:160px;border-radius:36px}.btns{justify-content:center}.hero p.lead{margin-left:auto;margin-right:auto}}
+section.band{padding:68px 0;border-bottom:1px solid var(--line)}
+section.band h2{font-size:30px;margin-bottom:8px}
+.sub{color:var(--muted);margin:0 0 30px;max-width:680px}
+.gallery{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+.gallery figure{margin:0;border-radius:12px;overflow:hidden;border:1px solid var(--line);position:relative;background:var(--card)}
+.gallery img{display:block;width:100%;height:100%;object-fit:cover;aspect-ratio:16/9}
+.gallery figcaption{position:absolute;left:0;right:0;bottom:0;padding:22px 12px 8px;font-size:13px;font-weight:700;background:linear-gradient(180deg,#0000,#000c)}
+.gallery .g1{grid-column:span 4;grid-row:span 2}.gallery .g1 img{aspect-ratio:auto}.gallery figure:not(.g1){grid-column:span 2}
+@media (max-width:780px){.gallery{grid-template-columns:1fr 1fr}.gallery figure{grid-column:span 1!important;grid-row:auto!important}.gallery .g1{grid-column:span 2!important}.gallery .g1 img{aspect-ratio:16/9}}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+@media (max-width:900px){.grid3,.grid4{grid-template-columns:1fr 1fr}}@media (max-width:560px){.grid3,.grid2,.grid4{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px}
+.card h3{font-size:17px;color:var(--gold);margin-bottom:6px}.card p{margin:0;color:#c9c5d6;font-size:15px}
+a.card{display:block;color:var(--text);transition:border-color .15s,transform .15s}a.card:hover{border-color:#f2c46a88;text-decoration:none;transform:translateY(-2px)}
+.steps{counter-reset:s;display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:0;padding:0;list-style:none}
+.steps li{counter-increment:s;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px}
+.steps li::before{content:counter(s);display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:#f2c46a22;color:var(--gold);font-weight:800;margin-bottom:10px;border:1px solid #f2c46a55}
+.steps b{display:block;margin-bottom:4px}.steps span{color:#c9c5d6;font-size:15px}
+@media (max-width:860px){.steps{grid-template-columns:1fr 1fr}}@media (max-width:520px){.steps{grid-template-columns:1fr}}
+.note{margin-top:20px;padding:14px 18px;border-radius:10px;background:#8ab4ff12;border:1px solid #8ab4ff33;color:#cfdcf6;font-size:15px}
+.dlbox{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;background:linear-gradient(135deg,#1d1a2c,#141625);border:1px solid #f2c46a44;border-radius:16px;padding:30px}
+.dlbox dl{display:grid;grid-template-columns:auto 1fr;gap:4px 18px;margin:14px 0 0;font-size:15px}.dlbox dt{color:var(--muted)}.dlbox dd{margin:0}
+@media (max-width:640px){.dlbox{grid-template-columns:1fr}}
+footer{padding:34px 0;color:var(--muted);font-size:14px}footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+/* wiki */
+.wiki{display:grid;grid-template-columns:230px 1fr;gap:34px;padding-top:30px;padding-bottom:60px}
+.side{position:sticky;top:80px;align-self:start;max-height:calc(100vh - 100px);overflow:auto}
+.side .search{width:100%;padding:10px 12px;border-radius:9px;border:1px solid var(--line);background:var(--card);color:var(--text);font:inherit;font-size:15px;margin-bottom:14px}
+.side a{display:block;padding:7px 12px;border-radius:8px;color:var(--muted);font-weight:700;font-size:15px}
+.side a:hover,.side a.on{background:#ffffff0d;color:var(--text);text-decoration:none}.side a.on{box-shadow:inset 3px 0 0 var(--gold)}
+.side .grp{font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:#6f6d84;margin:14px 12px 4px;font-weight:800}
+@media (max-width:860px){.wiki{grid-template-columns:1fr}.side{position:static;max-height:none}.side nav{display:flex;flex-wrap:wrap;gap:4px}.side .grp{display:none}}
+.doc h1{font-size:34px;margin-bottom:6px}.doc .lead{color:var(--muted);font-size:17px;margin:0 0 24px}
+.doc h2{font-size:22px;margin:34px 0 12px;padding-top:6px;border-top:1px solid var(--line);padding-top:22px}
+.doc h3{font-size:17px;margin:20px 0 8px;color:var(--gold)}
+.doc p,.doc li{color:#d3cfdd}.doc ul,.doc ol{padding-left:22px}
+.crumbs{font-size:14px;color:var(--muted);margin-bottom:10px}
+table{width:100%;border-collapse:collapse;font-size:14.5px;background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+th,td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:var(--card2);font-weight:800;font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);position:sticky;top:62px;cursor:default}
+th.s{cursor:pointer}th.s:hover{color:var(--text)}
+tr:last-child td{border-bottom:none}tbody tr:hover td{background:#ffffff06}
+td.n{font-variant-numeric:tabular-nums;text-align:right}th.n{text-align:right}
+.tblwrap{overflow-x:auto;border-radius:12px}
+.tag{display:inline-block;padding:1px 8px;border-radius:99px;font-size:12.5px;font-weight:800;border:1px solid var(--line);background:#ffffff08;margin:1px 3px 1px 0;white-space:nowrap}
+.kbd{display:inline-block;min-width:26px;text-align:center;padding:1px 7px;border-radius:6px;border:1px solid #3a3e5c;border-bottom-width:3px;background:#1f2236;font-weight:800;font-size:13px;margin:0 2px}
+.filters{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 16px;align-items:center}
+.filters input,.filters select{padding:9px 12px;border-radius:9px;border:1px solid var(--line);background:var(--card);color:var(--text);font:inherit;font-size:14.5px}
+.filters input{flex:1;min-width:200px}
+.pager{display:flex;gap:8px;align-items:center;justify-content:flex-end;margin-top:12px;color:var(--muted);font-size:14px}
+.pager button{padding:7px 14px;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--text);font:inherit;cursor:pointer}.pager button:disabled{opacity:.4;cursor:default}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:6px 18px;margin:0}.kv dt{color:var(--muted)}.kv dd{margin:0}
+.quote{border-left:3px solid var(--gold2);padding:6px 16px;margin:10px 0;color:#d9d2bf;background:#f2c46a0a;border-radius:0 8px 8px 0}
+.floornav{display:flex;justify-content:space-between;margin-top:30px;gap:10px}
+.spoiler{filter:blur(6px);cursor:pointer;transition:filter .2s}.spoiler.on{filter:none}
+.boss{background:linear-gradient(135deg,#2a1a22,#171a2b);border:1px solid #e5484d55;border-radius:12px;padding:20px}
+.chip-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.chip-row a{padding:6px 12px;border-radius:99px;border:1px solid var(--line);color:var(--muted);font-weight:700;font-size:14px}.chip-row a.on,.chip-row a:hover{color:var(--text);border-color:#f2c46a88;text-decoration:none}
+.empty{color:var(--muted);padding:20px;text-align:center}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="brand" href="#/"><img src="img/icone192.png" alt="">Ichimei Online</a>
+  <nav class="main">
+    <a href="#/" data-r="inicio" class="hide-s">Início</a>
+    <a href="#/wiki" data-r="wiki">Wiki</a>
+    <a href="#/wiki/como-jogar" data-r="jogar" class="hide-s">Como jogar</a>
+    <a href="#/baixar" class="dl">Baixar</a>
+  </nav>
+</div></header>
+<main id="app"></main>
+<footer><div class="wrap"><span>Ichimei Online · 一命 · versão 0.1.0</span><span>Uma torre. Cem andares. Uma vida.</span></div></footer>
+
+<script>
+const $ = s => document.querySelector(s), app = $('#app');
+const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;' })[c]);
+const hex = n => '#' + (n >>> 0).toString(16).padStart(6, '0');
+const fmt = n => typeof n === 'number' ? n.toLocaleString('pt-BR') : n;
+const norm = s => String(s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+let D = null; const loadD = () => D ? Promise.resolve(D) : fetch('data/wiki.json').then(r => r.json()).then(j => (D = j, prep(j), j));
+
+const DL_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M6 11l6 6 6-6M4 21h16"/></svg>';
+const PLAY_URL = 'jogar/';
+const DL_BTN = (t) => `<a class="btn primary" href="IchimeiOnline.apk" download="IchimeiOnline.apk">${DL_ICON}${t || 'Baixar para Android'}</a>`;
+const PLAY_BTN = `<a class="btn ghost" href="${PLAY_URL}" target="_blank" rel="noopener">Jogar no navegador</a>`;
+
+/* ---------- dados derivados ---------- */
+const SLOT_NM = { arma:'Arma', capacete:'Capacete', armadura:'Armadura', calca:'Calça', bota:'Botas', anel:'Anel', amuleto:'Amuleto' };
+const DGV_T = {
+  alavanca:['Alavanca', 'A passagem do chefe começa selada. A alavanca que abre o selo fica numa das salas laterais, guardada por monstros.'],
+  runas:['Runas', 'Cada sala lateral tem uma runa num pedestal. Ela só acende depois que a sala é limpa. Com todas acesas, o selo abre.'],
+  portal:['Portal', 'A passagem do chefe nunca abre. O caminho é um portal roxo numa sala lateral, guardada por um monstro de elite, que leva direto à arena.'],
+  guardas:['Guardiões', 'O selo abre quando todas as salas laterais forem limpas. Uma delas tem um guardião de elite.'] };
+const TQ_T = [
+  ['O gato sumido', 'Um morador perdeu o gato. Procure pela cidade, pegue o bichano no colo e devolva ao dono.'],
+  ['Pega ladrão', 'Alguém roubou a bolsa de um morador. Alcance o ladrão antes que ele fuja da cidade e devolva a bolsa.'],
+  ['As maçãs caídas', 'Um cesto virou e as maçãs rolaram pela rua. Junte as 8 e entregue ao dono.'],
+  ['A entrega do padeiro', 'O padeiro precisa mandar pão quente para um guarda do outro lado da cidade. Leve antes que esfrie.'],
+  ['A criança perdida', 'Uma criança se perdeu longe de casa. Encontre e leve de volta até a família.'] ];
+const SEC_HINT = { fish:'Dizem que um peixe grande do lago engoliu algo brilhante.', sit:'Quem senta e espera a madrugada vê coisas que os apressados não veem.', bow:'Há um lugar antigo que pede respeito a quem passa.', well:'Moedas jogadas à meia-noite têm outro peso.', dig:'Três pedras formam um triângulo em algum canto do campo.' };
+const RW_NM = { scroll:'pergaminho', pot:'poção', item:'item', elixir:'elixir' };
+const TOD_NM = { dia:'Dia', tarde:'Tarde', noite:'Noite', aurora:'Aurora', manha:'Manhã', crepusculo:'Crepúsculo' };
+let MOBF = {}, UNIQ = [];
+function prep(d){
+  d.floors.forEach(fl => ['com','dg','rare','named'].forEach(k => (fl.sp[k] || []).forEach(id => { MOBF[id] = { f:fl.f, where:k }; })));
+  d.floors.forEach(fl => fl.boss.uq.forEach(u => UNIQ.push({ name:u.name, slot:u.slot, rar:u.rar, from:fl.boss.name, f:fl.f, aff:u.aff, chance:1, boss:true })));
+  for (const [id, m] of Object.entries(d.mobs)) if (m[11] && m[11][2] >= 2){ const w = MOBF[id] || {}; UNIQ.push({ name:m[11][1], slot:m[11][0], rar:m[11][2], from:m[0], f:w.f, chance:m[11][3], id }); }
+  UNIQ.sort((a, b) => a.f - b.f || b.rar - a.rar);
+}
+const rarTag = r => `<span class="tag" style="color:${D.RAR[r].c};border-color:${D.RAR[r].c}55">${esc(D.RAR[r].n)}</span>`;
+const elTag = e => e && D.ELEM[e] ? `<span class="tag" style="color:${hex(D.ELEM[e].e)};border-color:${hex(D.ELEM[e].c)}88">${esc(D.ELEM[e].n)}</span>` : '';
+const affxTag = a => D.AFFIX[a] ? `<span class="tag" title="${esc(D.AFFIX[a].d)}">${esc(D.AFFIX[a].n)}</span>` : '';
+const affTag = a => D.AFF[a] ? `<span class="tag">${esc(D.AFF[a].n)}</span>` : '';
+const resN = k => D.RES[k] || k;
+const mobLink = id => { const m = D.mobs[id]; return m ? `<a href="#/wiki/monstro/${id}">${esc(m[0])}</a>` : esc(id); };
+const WHERE = { com:'Campo', dg:'Masmorra', rare:'Raro (campo)', named:'Nomeado' };
+
+/* ---------- páginas ---------- */
+const P = {};
+P.inicio = () => `
+<div class="hero"><div class="bgimg"></div><div class="wrap">
+  <img class="icon" src="img/icone.png" alt="Ícone do Ichimei Online">
+  <div><div class="eyebrow">MMORPG 3D · Android · Navegador</div><h1>Ichimei Online</h1>
+  <p class="lead">Uma torre de cem andares acima das nuvens. Cada andar tem sua cidade, seu chefe, suas masmorras e seus segredos. E você tem uma vida só.</p>
+  <div class="btns">${DL_BTN()}${PLAY_BTN}<a class="btn ghost" href="#/wiki">Abrir a wiki</a></div>
+  <div class="meta">Versão 0.1.0 · APK de 0,9 MB · Android 7 ou mais novo · joga offline</div></div>
+</div></div>
+<section class="band"><div class="wrap"><h2>O mundo</h2><p class="sub">Vilas com moradores que têm rotina própria, lagos cheios de vida, ruínas pelo campo e masmorras com salas secretas e portais.</p>
+<div class="gallery">
+  <figure class="g1"><img src="img/aldeia.jpg" alt="Aldeia no campo" loading="lazy"><figcaption>Aldeias espalhadas pelo campo</figcaption></figure>
+  <figure><img src="img/lago.jpg" alt="Lago" loading="lazy"><figcaption>Lagos com patos, peixes e uma serpe</figcaption></figure>
+  <figure><img src="img/npcs.jpg" alt="Moradores" loading="lazy"><figcaption>Moradores com rotina própria</figcaption></figure>
+  <figure><img src="img/secreta.jpg" alt="Sala secreta" loading="lazy"><figcaption>Salas secretas</figcaption></figure>
+  <figure><img src="img/portal.jpg" alt="Portal" loading="lazy"><figcaption>Portais</figcaption></figure>
+  <figure><img src="img/chefe.jpg" alt="Arena do chefe" loading="lazy"><figcaption>Um chefe por andar</figcaption></figure>
+</div></div></section>
+<section class="band"><div class="wrap"><h2>O que tem no jogo</h2><p class="sub">Tudo isso já está na versão 0.1.0. A wiki explica cada parte em detalhe.</p>
+<div class="grid3">
+  <a class="card" href="#/wiki/como-jogar"><h3>Uma vida só</h3><p>Morreu, acabou: seu nome vai para o Memorial. Cada luta pesa.</p></a>
+  <a class="card" href="#/wiki/andares"><h3>100 andares</h3><p>Dez capítulos, dez biomas, cem cidades e cem chefes com história própria.</p></a>
+  <a class="card" href="#/wiki/classes"><h3>6 classes</h3><p>Espadachim, assassino, lanceiro, bárbaro, esgrimista e arqueiro, cada um com sua árvore.</p></a>
+  <a class="card" href="#/wiki/masmorras"><h3>Masmorras que mudam</h3><p>Alavancas, runas, placas de pressão, guardiões, portais e paredes falsas.</p></a>
+  <a class="card" href="#/wiki/missoes"><h3>Missões e segredos</h3><p>História principal, pedidos do campo, eventos na cidade e segredos em cada andar.</p></a>
+  <a class="card" href="#/wiki/oficios"><h3>13 ofícios</h3><p>Minere, corte, forje, cozinhe, pesque e cace. Mais de cem receitas.</p></a>
+</div></div></section>
+<section class="band" id="baixar"><div class="wrap">${P.dlbox()}</div></section>`;
+P.dlbox = () => `<div class="dlbox"><div><h2>Baixar o Ichimei Online</h2><dl>
+  <dt>Versão</dt><dd>0.1.0 (modo offline)</dd><dt>Tamanho</dt><dd>0,9 MB</dd><dt>Requer</dt><dd>Android 7.0 ou mais novo, com WebGL</dd><dt>Multijogador</dt><dd>Em breve</dd></dl>
+  </div><div class="btns" style="flex-direction:column">${DL_BTN('Baixar APK')}${PLAY_BTN}</div>`;
+P.baixar = () => `<section class="band"><div class="wrap">${P.dlbox()}
+<h2 style="margin-top:46px">Como instalar</h2><p class="sub">O jogo ainda não está na Play Store, então a instalação é direta pelo arquivo APK.</p>
+<ol class="steps"><li><b>Baixe o APK</b><span>Toque em “Baixar APK” no celular.</span></li><li><b>Abra o arquivo</b><span>Pela notificação do download ou pelo app Arquivos.</span></li><li><b>Permita a instalação</b><span>Se o Android pedir, permita “instalar apps desconhecidos” para o navegador ou o app Arquivos.</span></li><li><b>Jogue</b><span>Toque em Instalar e abra o Ichimei Online. O jogo roda deitado, em tela cheia.</span></li></ol>
+<div class="note">O Play Protect pode avisar que o app é de um desenvolvedor desconhecido. Isso acontece com todo app instalado fora da Play Store: toque em “Instalar mesmo assim”. No jogo, o botão voltar fecha menus; dois toques rápidos saem do jogo.</div>
+</div></section>`;
+
+/* --- wiki: moldura --- */
+const WNAV = [['Começo', [['', 'Visão geral'], ['como-jogar', 'Como jogar'], ['controles', 'Controles'], ['classes', 'Classes e habilidades'], ['atributos', 'Atributos e morte']]],
+  ['Mundo', [['andares', 'Andares'], ['historia', 'História'], ['masmorras', 'Masmorras'], ['monstros', 'Monstros'], ['chefes', 'Chefes']]],
+  ['Progresso', [['missoes', 'Missões'], ['itens', 'Itens'], ['unicos', 'Itens únicos'], ['oficios', 'Ofícios e receitas'], ['vida', 'Vida na cidade']]]];
+function wiki(cur, body){
+  return `<div class="wrap wiki"><aside class="side"><input class="search" id="q" placeholder="Buscar na wiki…" value="${esc(S.q || '')}"><nav>${WNAV.map(([g, it]) => `<div class="grp">${g}</div>` + it.map(([k, n]) => `<a href="#/wiki${k ? '/' + k : ''}" class="${cur === k ? 'on' : ''}">${n}</a>`).join('')).join('')}</nav></aside><article class="doc">${body}</article></div>`;
+}
+const S = { q:'' };
+
+P['wiki:'] = () => `<h1>Wiki do Ichimei Online</h1><p class="lead">Tudo sobre a torre: como jogar, os cem andares, chefes, monstros, missões, itens e ofícios. Os dados saem direto do jogo.</p>
+<div class="grid3">${WNAV.flatMap(g => g[1]).filter(x => x[0]).map(([k, n]) => `<a class="card" href="#/wiki/${k}"><h3>${n}</h3><p>${({ 'como-jogar':'O ciclo de cada andar, do despertar ao chefe.', controles:'Teclado, toque e botões da tela.', classes:'As 6 classes, armas, habilidades e árvores.', atributos:'Força, agilidade, vitalidade e o Memorial.', andares:'Os 100 andares: bioma, cidade, chefe e história.', historia:'Os dez capítulos da torre.', masmorras:'Salas, selos, segredos e portais.', monstros:'Mais de 2.000 criaturas, com busca.', chefes:'Os 100 chefes e o que deixam cair.', missoes:'Principal, pedidos, eventos e segredos.', itens:'Raridades, encaixes, armas, sets e gemas.', unicos:'Itens únicos de chefes e monstros raros.', oficios:'13 ofícios e todas as receitas.', vida:'Casa, cavalo, pesca, caça, festivais.' })[k] || ''}</p></a>`).join('')}</div>
+<h2>Em números</h2><div class="grid4">${[[D.floors.length, 'andares'], [Object.keys(D.mobs).length, 'monstros'], [D.CLK.length, 'classes'], [D.JK.length, 'ofícios'], [D.RECIPES.length, 'receitas'], [UNIQ.length, 'itens únicos'], [D.BIOMES.length, 'biomas'], [D.CHAP.length, 'capítulos']].map(([n, t]) => `<div class="card"><h3 style="font-size:28px">${fmt(n)}</h3><p>${t}</p></div>`).join('')}</div>`;
+
+P['wiki:como-jogar'] = () => `<h1>Como jogar</h1><p class="lead">Você é um Desperto: acordou em Limiar, no primeiro andar de uma torre de cem. A única saída é subir. Cada andar segue o mesmo ciclo.</p>
+<h2>O ciclo de cada andar</h2><ol>
+<li><b>Chegue na cidade.</b> Toda cidade tem um guia (Cronista, Capitão, Sacerdotisa…), ferreiro, alquimista, mercador e mestre de armas.</li>
+<li><b>Fale com o guia.</b> Ele conta o problema do andar e passa duas tarefas no campo: abater um tipo de monstro e juntar um material.</li>
+<li><b>Cumpra as tarefas no campo.</b> O mapa do andar (tecla <span class="kbd">M</span>) e o rastreador no canto da tela mostram o que falta.</li>
+<li><b>Volte ao guia.</b> Ele entrega a chave da masmorra.</li>
+<li><b>Ache a masmorra.</b> No primeiro andar ela não aparece no mapa: o guia só diz a direção, e ela fica longe da cidade. Ela só entra no mapa quando você passa perto. Nos andares seguintes, pergunte aos viajantes.</li>
+<li><b>Atravesse a masmorra.</b> Cada sala limpa abre o portão da próxima. A passagem final está selada, e cada andar tem um jeito diferente de abrir (veja <a href="#/wiki/masmorras">Masmorras</a>).</li>
+<li><b>Derrote o chefe.</b> A escada para o próximo andar aparece na arena.</li></ol>
+<h2>Regras da torre</h2><ul>
+<li><b>Uma vida só.</b> Se o seu personagem morrer, ele vai para o Memorial com andar, nível e abates. Não tem como voltar.</li>
+<li><b>A cidade é segura.</b> Monstros não entram nas cidades. Lá você compra, vende, forja e descansa.</li>
+<li><b>O mundo se mexe.</b> Tem dia e noite, estações, clima e eventos: chefes de campo, invasões noturnas e caravanas.</li>
+<li><b>Fale com todo mundo.</b> Moradores pedem favores, viajantes contam boatos e alguns segredos só aparecem para quem presta atenção.</li></ul>
+<h2>Dicas para não morrer</h2><ul>
+<li>Leia o nome do monstro: os modificadores (Veloz, Instável, Vampírico…) dizem como ele luta. Veja <a href="#/wiki/monstros">Monstros</a>.</li>
+<li>Monstros com elemento aplicam efeitos: fogo queima, gelo deixa lento, pedra arremessa. Veja os elementos na mesma página.</li>
+<li>Carregue poções (<span class="kbd">Q</span>) e use a investida (<span class="kbd">Shift</span>) e o rolamento (<span class="kbd">X</span>) para sair de golpes fortes.</li>
+<li>Salas de armadilha alternam espinhos: observe o ritmo antes de atravessar.</li>
+<li>Não tem vergonha em voltar para a cidade. O portal verde de atalho leva da entrada ao fundo da masmorra depois que você o acende.</li></ul>`;
+
+P['wiki:controles'] = () => `<h1>Controles</h1><p class="lead">Todas as teclas podem ser trocadas no menu do jogo (Esc → Teclas).</p>
+<h2>Teclado</h2><div class="tblwrap"><table><thead><tr><th>Ação</th><th>Teclas</th></tr></thead><tbody>${D.KBA.map(([, n, k]) => `<tr><td>${esc(n)}</td><td>${k.map(x => `<span class="kbd">${esc(({ ' ':'Espaço', shift:'Shift', control:'Ctrl', enter:'Enter', escape:'Esc', arrowup:'↑', arrowdown:'↓', arrowleft:'←', arrowright:'→' })[x] || x.toUpperCase())}</span>`).join(' ')}</td></tr>`).join('')}</tbody></table></div>
+<h2>Celular e tela de toque</h2><ul>
+<li><b>Andar:</b> toque e arraste no lado esquerdo da tela. Um controle aparece onde o dedo encostou.</li>
+<li><b>Câmera:</b> arraste no lado direito da tela.</li>
+<li><b>Ações:</b> os botões no canto inferior direito atacam, usam habilidades, poção, investida, rolamento e pulo.</li>
+<li><b>Voltar do Android:</b> um toque fecha o menu aberto; dois toques rápidos saem do jogo.</li></ul>`;
+
+P['wiki:classes'] = () => `<h1>Classes e habilidades</h1><p class="lead">A classe define a arma, o tipo de armadura e as habilidades. Cada classe tem uma árvore com três ramos: ${D.BRN.map(esc).join(', ')}.</p>
+<div class="chip-row">${D.CLK.map(k => `<a href="#cls-${k}" onclick="document.getElementById('cls-${k}').scrollIntoView();return false">${esc(D.CLS[k].n)}</a>`).join('')}</div>
+${D.CLK.map(k => { const c = D.CLS[k], w = D.WT[c.wt]; const tree = D.TREE[k] || [];
+  return `<h2 id="cls-${k}">${esc(c.n)}</h2><p>${esc(c.d)}</p>
+  <dl class="kv"><dt>Arma</dt><dd>${esc(w.n)} · ${esc(w.d)}</dd><dt>Armadura</dt><dd>${esc(c.arm)}</dd><dt>Vida</dt><dd>${Math.round(c.hpK * 100)}% da base</dd><dt>Ataque</dt><dd>${Math.round(c.atkK * 100)}% da base</dd></dl>
+  <h3>Habilidades</h3><div class="tblwrap"><table><thead><tr><th>Habilidade</th><th>Efeito</th><th class="n">Nível</th><th class="n">Recarga</th></tr></thead><tbody>${(D.SKILLS[k] || []).map(s => `<tr><td><b>${esc(s.n)}</b></td><td>${esc(s.d)}</td><td class="n">${s.lv || 'árvore'}</td><td class="n">${s.cd} s</td></tr>`).join('')}</tbody></table></div>
+  <h3>Árvore de talentos</h3><div class="grid3">${D.BRN.map((bn, bi) => `<div class="card"><h3>${esc(bn)}</h3>${tree.filter(n => n.br === bi).map(n => `<p style="margin:0 0 8px"><b style="color:var(--text)">${esc(n.n)}</b>${n.t === 'a' ? ' <span class="tag">ativa</span>' : n.max > 1 ? ` <span class="tag">${n.max} níveis</span>` : ''}<br><span style="font-size:14px">${esc(n.d)}${n.req && n.req.lv ? ` · nível ${n.req.lv}` : ''}</span></p>`).join('')}</div>`).join('')}</div>`; }).join('')}`;
+
+P['wiki:atributos'] = () => `<h1>Atributos e morte</h1><p class="lead">A cada nível você ganha 3 pontos para distribuir no painel de Habilidades (tecla <span class="kbd">N</span>).</p>
+<div class="tblwrap"><table><thead><tr><th>Atributo</th><th>Efeito por ponto</th></tr></thead><tbody>
+<tr><td><b>Força</b></td><td>+0,25% de ataque</td></tr><tr><td><b>Agilidade</b></td><td>+0,05% de velocidade e +0,04% de crítico</td></tr><tr><td><b>Vitalidade</b></td><td>+0,25% de vida</td></tr></tbody></table></div>
+<h2>Pontos de habilidade</h2><p>Os pontos de habilidade vêm com o nível e destravam nós da árvore da sua classe. Alguns nós pedem nível mínimo ou o nó anterior do mesmo ramo.</p>
+<h2>Morte</h2><p>Ichimei quer dizer “uma vida”. Quando seu personagem morre, ele é apagado e o nome entra no <b>Memorial</b>, com o andar onde caiu, o nível e quantos monstros abateu. Quem chega ao topo e toca o Sino da Aurora também entra no Memorial, como vencedor.</p>
+<h2>Duelos</h2><p>Duelos entre jogadores não matam ninguém. Existem dois modos: <b>Primeiro golpe</b> (vence quem acertar primeiro) e <b>Metade da vida</b> (vence quem tirar metade da barra do outro).</p>`;
+
+/* andares */
+P['wiki:andares'] = () => { const ch = +(S.chap || 0);
+  return `<h1>Andares</h1><p class="lead">Cem andares em dez capítulos. Clique num andar para ver a história, as missões, os monstros e o chefe.</p>
+  <div class="chip-row">${D.CHAP.map((c, i) => `<a href="#/wiki/andares/${i}" class="${i === ch ? 'on' : ''}">${i * 10 + 1}–${i * 10 + 10} · ${esc(c.t)}</a>`).join('')}</div>
+  <p class="quote">${esc(D.CHAP[ch].d)}</p>
+  <div class="tblwrap"><table><thead><tr><th class="n">Andar</th><th>Bioma</th><th>Cidade</th><th>Chefe</th><th>Elemento</th><th>Masmorra</th></tr></thead><tbody>
+  ${D.floors.filter(f => f.chap === ch).map(f => `<tr><td class="n"><a href="#/wiki/andar/${f.f}">${f.f}</a></td><td>${esc(f.bio)}</td><td>${esc(f.city)}</td><td><a href="#/wiki/andar/${f.f}">${esc(f.boss.name)}</a></td><td>${elTag(f.boss.el) || '—'}</td><td>${DGV_T[f.dgv][0]}</td></tr>`).join('')}</tbody></table></div>`; };
+P['wiki:andar'] = (n) => { const f = D.floors[(+n || 1) - 1]; if (!f) return '<p class="empty">Andar não encontrado.</p>'; const b = f.boss;
+  const mobRows = k => (f.sp[k] || []).map(id => { const m = D.mobs[id]; return m ? `<tr><td>${mobLink(id)}</td><td class="n">${m[4]}</td><td class="n">${fmt(m[5])}</td><td class="n">${m[6]}</td><td>${elTag(m[2])}${m[3].map(affxTag).join('')}</td><td>${esc(m[9])}</td></tr>` : ''; }).join('');
+  const tbl = (t, k) => (f.sp[k] || []).length ? `<h3>${t}</h3><div class="tblwrap"><table><thead><tr><th>Monstro</th><th class="n">Nível</th><th class="n">Vida</th><th class="n">Dano</th><th>Traços</th><th>Material</th></tr></thead><tbody>${mobRows(k)}</tbody></table></div>` : '';
+  return `<div class="crumbs"><a href="#/wiki/andares/${f.chap}">Andares</a> · Capítulo ${f.chap + 1}: ${esc(D.CHAP[f.chap].t)}</div>
+  <h1>Andar ${f.f} · ${esc(f.city)}</h1><p class="lead">${esc(f.bio)} · ${esc(TOD_NM[f.tod] || f.tod)}${f.lake ? ' · tem lago' : ''}</p>
+  <dl class="kv"><dt>Guia</dt><dd>${esc(f.guia)}</dd><dt>Moradores</dt><dd>${f.npcs.filter(n => n !== f.guia).map(esc).join(', ')}</dd><dt>Lugares</dt><dd>${f.lms.map(esc).join(', ')}</dd>${f.node ? `<dt>Recurso do andar</dt><dd>${esc(f.node)}</dd>` : ''}</dl>
+  ${f.story ? `<h2>História: ${esc(f.story.t)}</h2><p class="quote">${esc(f.story.a)}</p><p class="muted" style="font-size:14px;color:var(--muted)">Spoilers: toque para revelar.</p><p class="spoiler" onclick="this.classList.toggle('on')">${esc(f.story.b)} ${esc(f.story.c)} ${esc(f.story.e)}</p>` : ''}
+  <h2>Missões</h2><h3>Principal</h3><ol><li>Fale com ${esc(f.guia)}.</li>${f.main.map(t => `<li>${esc(t)}.</li>`).join('')}<li>Volte a ${esc(f.guia)} e receba a chave da masmorra.</li><li>Ache a masmorra de ${esc(b.short)} e derrote o chefe.</li></ol>
+  ${f.sides.length ? `<h3>Pedidos da cidade</h3><div class="tblwrap"><table><thead><tr><th>Missão</th><th>Quem pede</th><th>Objetivo</th><th>Recompensa</th></tr></thead><tbody>${f.sides.map(s => `<tr><td><b>${esc(s.t)}</b></td><td>${esc(s.giver)}</td><td>${esc(s.o)}</td><td>${fmt(s.gold)} ouro + ${esc(RW_NM[s.rw] || s.rw)}</td></tr>`).join('')}</tbody></table></div>` : ''}
+  <h2>Masmorra</h2><p><b>${DGV_T[f.dgv][0]}:</b> ${DGV_T[f.dgv][1]}${f.f >= 2 ? ' Uma das salas do caminho tem placas de pressão.' : ''} Toda masmorra tem uma sala secreta atrás de uma parede rachada.</p>
+  <h2>Chefe</h2><div class="boss"><h3 style="font-size:20px;color:#ffb3b5">${esc(b.name)}</h3><p>${esc(b.kind || '')} ${elTag(b.el)}${b.affs.map(affxTag).join('')}${b.chief ? ' <span class="tag">chefe de capítulo</span>' : ''}</p>
+  <dl class="kv" style="margin-top:10px"><dt>Material</dt><dd>${esc(b.mat)}</dd><dt>Itens únicos</dt><dd>${b.uq.map(u => `${esc(u.name)} (${esc(SLOT_NM[u.slot] || u.slot)}) ${rarTag(u.rar)}`).join('<br>')}</dd></dl></div>
+  <h2>Monstros</h2>${tbl('No campo', 'com')}${tbl('Na masmorra', 'dg')}${tbl('Raros', 'rare')}${tbl('Nomeados', 'named')}
+  <div class="floornav">${f.f > 1 ? `<a class="btn ghost" href="#/wiki/andar/${f.f - 1}">← Andar ${f.f - 1}</a>` : '<span></span>'}${f.f < 100 ? `<a class="btn ghost" href="#/wiki/andar/${f.f + 1}">Andar ${f.f + 1} →</a>` : ''}</div>`; };
+
+P['wiki:historia'] = () => `<h1>História</h1><p class="lead">A Torre tem cem andares divididos em dez capítulos. No topo fica o Sino da Aurora.</p>
+${D.CHAP.map((c, i) => `<h2>Capítulo ${i + 1} · ${esc(c.t)}</h2><p>${esc(c.d)}</p><p style="font-size:14px"><a href="#/wiki/andares/${i}">Andares ${i * 10 + 1} a ${i * 10 + 10}</a> · chefe final: ${esc(D.floors[i * 10 + 9].boss.name)}</p>`).join('')}`;
+
+P['wiki:masmorras'] = () => `<h1>Masmorras</h1><p class="lead">Cada andar tem uma masmorra principal, com o chefe no fundo, e masmorras opcionais espalhadas pelo campo.</p>
+<h2>Estrutura</h2><ul><li><b>Caminho principal:</b> de 6 a 8 salas em sequência. Cada sala limpa abre o portão vermelho da próxima.</li><li><b>Salas laterais:</b> 2 ou 3 salas sem saída, ligadas por corredores. Guardam o mecanismo do selo.</li><li><b>Sala do tesouro:</b> um baú e alguns monstros fora do caminho.</li><li><b>Passagem selada:</b> o último corredor até o chefe. Cada andar abre de um jeito.</li></ul>
+<h2>Como abrir a sala do chefe</h2><p>O jeito muda a cada andar, num ciclo de quatro.</p><div class="grid2">${Object.entries(DGV_T).map(([k, [n, d]], i) => `<div class="card"><h3>${n}</h3><p>${d}</p><p style="margin-top:8px;color:var(--muted);font-size:14px">Andares ${i + 1}, ${i + 5}, ${i + 9}…</p></div>`).join('')}</div>
+<h2>Tipos de sala</h2><div class="tblwrap"><table><thead><tr><th>Sala</th><th>O que tem</th></tr></thead><tbody>
+<tr><td><b>Combate</b></td><td>Um grupo de monstros da masmorra. Do andar 4 em diante, também um monstro pesado.</td></tr>
+<tr><td><b>Elite</b></td><td>Um monstro raro de elite com dois ajudantes.</td></tr>
+<tr><td><b>Armadilha</b></td><td>Espinhos que sobem do chão em dois grupos alternados, a cada 2,6 s.</td></tr>
+<tr><td><b>Placas de pressão</b></td><td>Do andar 2 em diante. A saída só abre com as 4 placas dos cantos pisadas e a sala limpa. Cada placa acorda um monstro.</td></tr>
+<tr><td><b>Tesouro</b></td><td>Baú do andar, guardado por um monstro raro.</td></tr>
+<tr><td><b>Sala secreta</b></td><td>Atrás de uma parede rachada. Perto dela, uma corrente de ar fria avisa. Tem um baú melhor, moedas e um portal de volta à entrada.</td></tr></tbody></table></div>
+<h2>Portais</h2><div class="grid3"><div class="card"><h3 style="color:#9dff8a">Verde · atalho</h3><p>Fica no fundo do caminho principal. Ao chegar perto, ele acende o par na entrada, e você pode ir e voltar na hora.</p></div><div class="card"><h3 style="color:var(--cyan)">Azul · retorno</h3><p>Na sala secreta. Leva de volta à entrada.</p></div><div class="card"><h3 style="color:#b48aff">Roxo · arena</h3><p>Nos andares com a mecânica de portal. Liga uma sala lateral à arena do chefe.</p></div></div>
+<h2>Armadilhas de corredor</h2><p>Todo corredor tem espinhos no chão. A partir do andar 12, e nos labirintos, aparecem dois por corredor.</p>
+<h2>Masmorras opcionais</h2><p>Cada andar tem masmorras menores no campo, com um guardião de elite no fundo e um baú com ouro em dobro. Algumas são escondidas e só aparecem quando você passa perto.</p>
+<div class="grid3">${[['Caverna', 'Estalactites, tochas alaranjadas e pedra crua.'], ['Ruínas', 'Musgo, pedra verde e raízes no teto.'], ['Cripta', 'Ossos pelo chão e luz azulada.'], ['Mina', 'Trilhos, vagonetes, escoras e veios de minério.'], ['Labirinto', 'Salas grandes e mais espinhos. Só aparece escondido.']].map(([n, d]) => `<div class="card"><h3>${n}</h3><p>${d}</p></div>`).join('')}</div>`;
+
+/* monstros: lista com busca e páginas */
+P['wiki:monstros'] = () => { const fam = S.fam || '', el = S.el || '', q = norm(S.mq || '');
+  let rows = Object.entries(D.mobs).filter(([id, m]) => (!fam || m[1] === fam) && (!el || m[2] === el) && (!q || norm(m[0]).includes(q) || norm(m[9]).includes(q)));
+  const sk = S.ms || 'lv', dir = S.md || 1; const ix = { nm:0, lv:4, hp:5, dmg:6, xp:7 }[sk];
+  rows.sort((a, b) => (typeof a[1][ix] === 'string' ? a[1][ix].localeCompare(b[1][ix]) : a[1][ix] - b[1][ix]) * dir);
+  const pg = S.mp || 0, per = 60, tot = rows.length, pages = Math.max(1, Math.ceil(tot / per)); rows = rows.slice(pg * per, pg * per + per);
+  const th = (k, t, n) => `<th class="s ${n ? 'n' : ''}" data-sort="${k}">${t}${sk === k ? (dir > 0 ? ' ▲' : ' ▼') : ''}</th>`;
+  return `<h1>Monstros</h1><p class="lead">${fmt(Object.keys(D.mobs).length)} criaturas, vinte por andar: dez do campo, cinco da masmorra, três raras e duas nomeadas.</p>
+  <div class="filters"><input id="mq" placeholder="Buscar por nome ou material…" value="${esc(S.mq || '')}">
+  <select id="mfam"><option value="">Todas as famílias</option>${Object.keys(D.FAM).sort().map(k => `<option value="${k}" ${k === fam ? 'selected' : ''}>${esc(k)}</option>`).join('')}</select>
+  <select id="mel"><option value="">Todos os elementos</option>${D.ELK.map(k => `<option value="${k}" ${k === el ? 'selected' : ''}>${esc(D.ELEM[k].n)}</option>`).join('')}</select></div>
+  <div class="tblwrap"><table><thead><tr>${th('nm', 'Monstro')}<th>Andar</th>${th('lv', 'Nível', 1)}${th('hp', 'Vida', 1)}${th('dmg', 'Dano', 1)}${th('xp', 'XP', 1)}<th>Traços</th></tr></thead><tbody>
+  ${rows.map(([id, m]) => { const w = MOBF[id] || {}; return `<tr><td>${mobLink(id)}${m[10] ? ` <span class="tag">${esc(m[10])}</span>` : ''}</td><td><a href="#/wiki/andar/${w.f}">${w.f}</a> · ${WHERE[w.where] || ''}</td><td class="n">${m[4]}</td><td class="n">${fmt(m[5])}</td><td class="n">${m[6]}</td><td class="n">${m[7]}</td><td>${elTag(m[2])}${m[3].map(affxTag).join('')}</td></tr>`; }).join('') || '<tr><td colspan="7" class="empty">Nada encontrado.</td></tr>'}</tbody></table></div>
+  <div class="pager"><span>${fmt(tot)} resultados · página ${pg + 1} de ${pages}</span><button data-pg="-1" ${pg ? '' : 'disabled'}>Anterior</button><button data-pg="1" ${pg < pages - 1 ? '' : 'disabled'}>Próxima</button></div>
+  <h2>Modificadores</h2><p>Aparecem no nome do monstro. Combinados, deixam a luta bem diferente.</p><div class="tblwrap"><table><thead><tr><th>Modificador</th><th>O que faz</th></tr></thead><tbody>${D.AFK.map(k => `<tr><td><b>${esc(D.AFFIX[k].n)}</b></td><td>${esc(D.AFFIX[k].d)}</td></tr>`).join('')}</tbody></table></div>
+  <h2>Elementos</h2><div class="tblwrap"><table><thead><tr><th>Elemento</th><th>Efeito no jogador</th></tr></thead><tbody>${D.ELK.map(k => `<tr><td>${elTag(k)}</td><td>${esc(D.ELEM[k].d)}</td></tr>`).join('')}</tbody></table></div>
+  <h2>Famílias</h2><div class="tblwrap"><table><thead><tr><th>Família</th><th>Exemplos</th><th>Material</th></tr></thead><tbody>${Object.entries(D.FAM).map(([k, v]) => `<tr><td><b>${esc(k)}</b></td><td>${v.n.map(esc).join(', ')}</td><td>${esc(v.mat)}</td></tr>`).join('')}</tbody></table></div>`; };
+P['wiki:monstro'] = (id) => { const m = D.mobs[id]; if (!m) return '<p class="empty">Monstro não encontrado.</p>'; const w = MOBF[id] || {};
+  return `<div class="crumbs"><a href="#/wiki/monstros">Monstros</a> · Andar ${w.f}</div><h1>${esc(m[0])}</h1><p class="lead">${esc(m[10] || m[1])} · ${WHERE[w.where] || ''} do <a href="#/wiki/andar/${w.f}">andar ${w.f}</a></p>
+  <dl class="kv"><dt>Família</dt><dd>${esc(m[1])}</dd><dt>Nível</dt><dd>${m[4]}</dd><dt>Vida</dt><dd>${fmt(m[5])}</dd><dt>Dano</dt><dd>${m[6]}</dd><dt>Recompensa</dt><dd>${m[7]} XP · ${m[8]} ouro</dd><dt>Material</dt><dd>${esc(m[9])}</dd>
+  ${m[2] ? `<dt>Elemento</dt><dd>${elTag(m[2])} ${esc(D.ELEM[m[2]].d)}</dd>` : ''}${m[3].length ? `<dt>Modificadores</dt><dd>${m[3].map(a => `${affxTag(a)} ${esc((D.AFFIX[a] || {}).d || '')}`).join('<br>')}</dd>` : ''}
+  ${m[11] ? `<dt>Item único</dt><dd>${esc(m[11][1])} (${esc(SLOT_NM[m[11][0]] || m[11][0])}) ${rarTag(m[11][2])} · chance de ${(m[11][3] * 100).toLocaleString('pt-BR', { maximumFractionDigits:1 })}%</dd>` : ''}</dl>`; };
+
+P['wiki:chefes'] = () => `<h1>Chefes</h1><p class="lead">Um chefe por andar, no fundo da masmorra principal. O último de cada capítulo é um chefe de capítulo. Todo chefe deixa cair dois itens únicos garantidos.</p>
+<div class="tblwrap"><table><thead><tr><th class="n">Andar</th><th>Chefe</th><th>Traços</th><th>Itens únicos</th></tr></thead><tbody>${D.floors.map(f => `<tr><td class="n"><a href="#/wiki/andar/${f.f}">${f.f}</a></td><td><b>${esc(f.boss.name)}</b>${f.boss.chief ? ' <span class="tag">capítulo</span>' : ''}</td><td>${elTag(f.boss.el)}${f.boss.affs.map(affxTag).join('')}</td><td>${f.boss.uq.map(u => esc(u.name)).join('<br>')}</td></tr>`).join('')}</tbody></table></div>`;
+
+P['wiki:missoes'] = () => `<h1>Missões</h1><p class="lead">Quatro tipos de missão: a principal de cada andar, pedidos de moradores, eventos que acontecem na cidade e segredos escondidos no campo.</p>
+<h2>Missão principal</h2><p>Cada andar tem uma história própria contada pelo guia da cidade, com duas tarefas no campo (abater e coletar). No fim, o guia entrega a chave da masmorra. A lista completa está em cada página de <a href="#/wiki/andares">andar</a>.</p>
+<div class="tblwrap"><table><thead><tr><th class="n">Andar</th><th>História</th><th>Tarefas</th></tr></thead><tbody>${D.floors.slice(0, 20).map(f => `<tr><td class="n"><a href="#/wiki/andar/${f.f}">${f.f}</a></td><td><b>${esc(f.story ? f.story.t : '')}</b></td><td>${f.main.map(esc).join('<br>')}</td></tr>`).join('')}</tbody></table></div>
+<p style="font-size:14px;color:var(--muted)">Mostrando os 20 primeiros andares. Os outros estão nas páginas de cada andar.</p>
+<h2>Pedidos da cidade</h2><p>Dois moradores de cada cidade têm um pedido: caçar monstros específicos, achar um baú perdido, reconhecer um lugar. Pagam em ouro e um item, pergaminho ou poção.</p>
+<h2>Viajantes do campo</h2><p>Gente que você encontra na estrada pede favores simples.</p><div class="tblwrap"><table><thead><tr><th>Quem</th><th>Pedido</th></tr></thead><tbody>${D.SIDE_T.map(s => `<tr><td><b>${esc(s.n)}</b><br><span style="color:var(--muted);font-size:13px">${esc(s.job)}</span></td><td>“${esc(s.t)}”</td></tr>`).join('')}</tbody></table></div>
+<h2>Eventos na cidade</h2><p>De tempos em tempos, de dia, algo acontece na cidade. Cada evento só acontece uma vez por andar.</p><div class="grid2">${TQ_T.map(([t, d]) => `<div class="card"><h3>${t}</h3><p>${d}</p></div>`).join('')}</div>
+<h2>Segredos</h2><p>Cada andar esconde ${Object.keys(D.SEC_N).length} segredos. Viajantes contam boatos sobre eles. Achar todos de um andar rende um item extra.</p><div class="tblwrap"><table><thead><tr><th>Segredo</th><th>Boato</th></tr></thead><tbody>${Object.entries(D.SEC_N).map(([k, n]) => `<tr><td><b>${esc(n)}</b></td><td class="spoiler" onclick="this.classList.toggle('on')">${esc(SEC_HINT[k] || '')}</td></tr>`).join('')}</tbody></table></div>
+<h2>Eventos do mundo</h2><div class="grid3">${Object.values(D.EVN).map(n => `<div class="card"><h3>${esc(n)}</h3><p>${({ 'Chefe de campo':'Um monstro poderoso aparece no campo por um tempo.', 'Invasão noturna':'À noite, monstros atacam as bordas da cidade.', 'Caravana':'Uma caravana atravessa o campo e precisa de escolta.' })[n] || ''}</p></div>`).join('')}</div>`;
+
+P['wiki:itens'] = () => `<h1>Itens</h1><p class="lead">Equipamentos têm encaixe, raridade, tema e propriedades extras.</p>
+<h2>Raridades</h2><div class="tblwrap"><table><thead><tr><th>Raridade</th><th class="n">Força</th></tr></thead><tbody>${D.RAR.map((r, i) => `<tr><td>${rarTag(i)}</td><td class="n">×${r.m.toLocaleString('pt-BR')}</td></tr>`).join('')}</tbody></table></div>
+<h2>Encaixes</h2><div class="tblwrap"><table><thead><tr><th>Encaixe</th><th>Propriedades possíveis</th></tr></thead><tbody>${D.SLOTS.map(s => `<tr><td><b>${SLOT_NM[s]}</b></td><td>${(D.SL_AFF[s] || []).map(affTag).join('')}</td></tr>`).join('')}</tbody></table></div>
+<h2>Tipos de arma</h2><div class="tblwrap"><table><thead><tr><th>Arma</th><th>Estilo</th><th class="n">Alcance</th><th class="n">Dano</th></tr></thead><tbody>${D.WTK.map(k => { const w = D.WT[k]; return `<tr><td><b>${esc(w.n)}</b><br><span style="font-size:13px;color:var(--muted)">${w.names.map(esc).join(', ')}</span></td><td>${esc(w.d)}</td><td class="n">${w.range} m</td><td class="n">×${w.mult}</td></tr>`; }).join('')}</tbody></table></div>
+<h2>Propriedades</h2><p>${Object.keys(D.AFF).map(affTag).join(' ')}</p>
+<h2>Temas e sets</h2><p>Todo item tem um tema (o “sobrenome” do item). Usar várias peças do mesmo tema ativa bônus de set:</p><ul>${D.SET_BONUS.map(([n, , , t]) => `<li><b>${n} peças:</b> ${esc(t)}</li>`).join('')}</ul>
+<div class="tblwrap"><table><thead><tr><th>Tema</th><th>Propriedade ligada</th></tr></thead><tbody>${Object.values(D.THEME).map(t => `<tr><td><span style="color:${hex(t.a)}">■</span> <b>${esc(t.n)}</b></td><td>${t.af ? affTag(t.af) : '—'}</td></tr>`).join('')}</tbody></table></div>
+<h2>Gemas</h2><div class="tblwrap"><table><thead><tr><th>Gema</th><th>Propriedade</th></tr></thead><tbody>${Object.values(D.GEMS).map(g => `<tr><td><b>${esc(g.n)}</b></td><td>${affTag(g.k)}</td></tr>`).join('')}</tbody></table></div>
+<h2>Forja</h2><p>O ferreiro forja peças novas com metal, essência de chefe e, se quiser, uma gema. Também reforja, encaixa gemas e desmancha o que sobra.</p>
+<div class="tblwrap"><table><thead><tr><th>Metal</th><th class="n">Quantidade</th></tr></thead><tbody>${D.FG_METAL.map(m => `<tr><td>${esc(m.n)}</td><td class="n">${m.q}</td></tr>`).join('')}</tbody></table></div>
+<h2>Consumíveis</h2><ul><li><b>Poção:</b> cura na hora (tecla <span class="kbd">Q</span>).</li><li><b>Elixir:</b> +25% de força por 45 segundos.</li><li><b>Pergaminho:</b> leva de volta à cidade.</li><li><b>Comidas e bebidas:</b> feitas por cozinheiros e padeiros, dão bônus temporários.</li></ul>`;
+
+P['wiki:unicos'] = () => { const q = norm(S.uq || ''); const rows = UNIQ.filter(u => !q || norm(u.name).includes(q) || norm(u.from).includes(q));
+  return `<h1>Itens únicos</h1><p class="lead">${fmt(UNIQ.length)} itens com nome próprio. Chefes deixam cair os deles sempre. Monstros raros e nomeados têm uma chance.</p>
+  <div class="filters"><input id="uq" placeholder="Buscar item ou quem deixa cair…" value="${esc(S.uq || '')}"></div>
+  <div class="tblwrap"><table><thead><tr><th>Item</th><th>Encaixe</th><th>Raridade</th><th>Quem deixa cair</th><th class="n">Andar</th><th class="n">Chance</th></tr></thead><tbody>${rows.slice(0, 300).map(u => `<tr><td><b>${esc(u.name)}</b></td><td>${SLOT_NM[u.slot] || u.slot}</td><td>${rarTag(u.rar)}</td><td>${u.id ? mobLink(u.id) : esc(u.from)}</td><td class="n"><a href="#/wiki/andar/${u.f}">${u.f}</a></td><td class="n">${Math.round(u.chance * 1000) / 10}%</td></tr>`).join('')}</tbody></table></div>${rows.length > 300 ? `<p style="color:var(--muted);font-size:14px">Mostrando 300 de ${fmt(rows.length)}. Use a busca para achar o resto.</p>` : ''}`; };
+
+P['wiki:oficios'] = () => { const j = S.job || D.JK[0];
+  return `<h1>Ofícios e receitas</h1><p class="lead">${D.JK.length} ofícios para coletar, fabricar e melhorar. Cada um sobe de nível com o uso e destrava receitas novas.</p>
+  <div class="grid3">${D.JK.map(k => `<a class="card" href="#/wiki/oficios/${k}" style="${k === j ? 'border-color:#f2c46a88' : ''}"><h3>${esc(D.JOBS[k].n)}</h3><p>${esc(D.JOBS[k].d)}</p></a>`).join('')}</div>
+  <h2>Receitas: ${esc(D.JOBS[j].n)}</h2><div class="tblwrap"><table><thead><tr><th>Receita</th><th class="n">Nível</th><th>Ingredientes</th><th>Resultado</th><th class="n">XP</th></tr></thead><tbody>${D.RECIPES.filter(r => r.j === j).map(r => `<tr><td><b>${esc(r.n)}</b></td><td class="n">${r.lv}</td><td>${Object.entries(r.in || {}).map(([k, n]) => `${n}× ${esc(resN(k))}`).join('<br>')}</td><td>${r.out ? Object.entries(r.out).map(([k, n]) => `${n}× ${esc(resN(k))}`).join('<br>') : r.up ? 'Melhoria de equipamento' : '—'}</td><td class="n">${r.xp}</td></tr>`).join('') || '<tr><td colspan="5" class="empty">Este ofício trabalha coletando no campo.</td></tr>'}</tbody></table></div>
+  <h2>Níveis de material</h2><div class="tblwrap"><table><thead><tr><th>Metal</th><th>Madeira</th><th class="n">A partir do andar</th><th class="n">Nível do ofício</th></tr></thead><tbody>${D.TIER.map(t => `<tr><td>${esc(t.N)}</td><td>${esc(t.W)}</td><td class="n">${t.f}</td><td class="n">${t.lv}</td></tr>`).join('')}</tbody></table></div>
+  <h2>Ferramentas</h2><ul>${Object.values(D.TOOLS).map(t => `<li><b>${esc(t.n)}</b> para ${esc(t.node)}</li>`).join('')}</ul>`; };
+
+P['wiki:vida'] = () => `<h1>Vida na cidade</h1><p class="lead">Nem tudo é masmorra. As cidades têm moradores, comércio, festas e casas à venda.</p>
+<h2>Moradores</h2><p>Cada cidade tem dezenas de moradores com profissão e rotina: padeiros, lavradores, mercadores, costureiras, nobres, artesãos, lenhadores, pescadores, lavadeiras, coletoras e crianças. Eles trabalham, conversam entre si, cumprimentam você e ficam seus amigos se você conversar com frequência. Aldeias pequenas no campo também têm moradores.</p>
+<h2>Casa</h2><p>Algumas casas ficam à venda. Depois de comprar, você decora:</p><div class="tblwrap"><table><thead><tr><th>Decoração</th><th>Opções (preço em ouro)</th></tr></thead><tbody>${Object.values(D.DECO).map(d => `<tr><td><b>${esc(d.n)}</b></td><td>${d.ops.map(o => `${esc(o[0])} (${o[2]})`).join(', ')}</td></tr>`).join('')}</tbody></table></div>
+<h2>Cavalo</h2><p>Custa ${fmt(D.HORSE_COST)} ouro. Pelagens: ${D.HORSE_C.map(c => esc(c[0])).join(', ')}. Tecla <span class="kbd">H</span> para montar.</p>
+<h2>Pesca</h2><p>Em qualquer lago, com a tecla de usar. Alguns peixes só aparecem à noite ou no frio.</p><div class="tblwrap"><table><thead><tr><th>Peixe</th><th>Condição</th></tr></thead><tbody>${D.FISH.map(f => `<tr><td>${esc(f.n)}</td><td>${f.night ? 'só à noite' : f.cold ? 'só no frio' : '—'}</td></tr>`).join('')}</tbody></table></div>
+<h2>Caça</h2><div class="tblwrap"><table><thead><tr><th>Animal</th><th>Comportamento</th><th>O que dá</th></tr></thead><tbody>${Object.values(D.FAUNA).map(a => `<tr><td><b>${esc(a.n)}</b></td><td>${a.rage ? 'ataca se provocado' : 'foge'}</td><td>${a.drop.map(x => esc(resN(x[0]))).join(', ')}</td></tr>`).join('')}</tbody></table></div>
+<h2>Festivais</h2><p>Um por estação: ${D.FEST.map(esc).join(', ')}.</p>
+<h2>Taverna</h2><p>Descanse na estalagem, beba, jogue dados ou cartas com os moradores.</p>`;
+
+/* ---------- busca global ---------- */
+P['wiki:busca'] = () => { const q = norm(S.q); if (q.length < 2) return '<h1>Busca</h1><p class="empty">Digite pelo menos duas letras.</p>'; const R = [];
+  D.floors.forEach(f => { if (norm(f.city + ' ' + f.boss.name + ' ' + f.bio + ' ' + (f.story ? f.story.t : '')).includes(q)) R.push([`Andar ${f.f} · ${f.city}`, `#/wiki/andar/${f.f}`, f.boss.name]); });
+  for (const [id, m] of Object.entries(D.mobs)) if (norm(m[0]).includes(q)) R.push([m[0], `#/wiki/monstro/${id}`, 'Monstro · andar ' + (MOBF[id] || {}).f]);
+  UNIQ.forEach(u => { if (norm(u.name).includes(q)) R.push([u.name, u.id ? `#/wiki/monstro/${u.id}` : `#/wiki/andar/${u.f}`, 'Item único · ' + u.from]); });
+  D.RECIPES.forEach(r => { if (norm(r.n).includes(q)) R.push([r.n, `#/wiki/oficios/${r.j}`, 'Receita · ' + D.JOBS[r.j].n]); });
+  D.CLK.forEach(k => (D.SKILLS[k] || []).forEach(s => { if (norm(s.n).includes(q)) R.push([s.n, '#/wiki/classes', 'Habilidade · ' + D.CLS[k].n]); }));
+  return `<h1>Busca: “${esc(S.q)}”</h1><p class="lead">${fmt(R.length)} resultados${R.length > 200 ? ' (mostrando 200)' : ''}.</p>${R.length ? `<div class="tblwrap"><table><tbody>${R.slice(0, 200).map(([t, h, d]) => `<tr><td><a href="${h}"><b>${esc(t)}</b></a></td><td style="color:var(--muted)">${esc(d)}</td></tr>`).join('')}</tbody></table></div>` : '<p class="empty">Nada encontrado.</p>'}`; };
+
+/* ---------- roteador ---------- */
+function route(){
+  const h = location.hash.replace(/^#\/?/, ''), parts = h.split('/').map(decodeURIComponent);
+  document.querySelectorAll('nav.main a[data-r]').forEach(a => a.classList.remove('on'));
+  if (!parts[0]){ app.innerHTML = P.inicio(); document.title = 'Ichimei Online'; $('nav.main a[data-r=inicio]').classList.add('on'); return; }
+  if (parts[0] === 'baixar'){ app.innerHTML = P.baixar(); document.title = 'Baixar · Ichimei Online'; return; }
+  if (parts[0] === 'wiki'){ $(parts[1] === 'como-jogar' ? 'nav.main a[data-r=jogar]' : 'nav.main a[data-r=wiki]').classList.add('on');
+    app.innerHTML = '<div class="wrap" style="padding:60px 22px;color:var(--muted)">Carregando a wiki…</div>';
+    loadD().then(() => { let k = parts[1] || '', arg = parts[2];
+      if (k === 'andares' && arg != null) S.chap = +arg; if (k === 'oficios' && arg) S.job = arg;
+      const fn = P['wiki:' + k] || P['wiki:']; const cur = k === 'andar' ? 'andares' : k === 'monstro' ? 'monstros' : k;
+      app.innerHTML = wiki(cur, fn(arg)); document.title = (k ? (document.querySelector('.doc h1') || {}).textContent + ' · ' : '') + 'Wiki · Ichimei Online'; bind(); });
+    return; }
+  app.innerHTML = P.inicio();
+}
+function rerender(){ const k = location.hash.split('/')[2] || ''; const fn = P['wiki:' + k]; const doc = document.querySelector('.doc'); if (doc && fn) { doc.innerHTML = fn(location.hash.split('/')[3]); bind(true); } }
+function bind(keepFocus){
+  const q = $('#q'); if (q) q.onkeydown = e => { if (e.key === 'Enter'){ S.q = q.value.trim(); if (location.hash === '#/wiki/busca') route(); else location.hash = '#/wiki/busca'; } };
+  const mq = $('#mq'); if (mq){ mq.oninput = () => { S.mq = mq.value; S.mp = 0; rerender(); const n = $('#mq'); n.focus(); n.setSelectionRange(n.value.length, n.value.length); }; }
+  const mf = $('#mfam'); if (mf) mf.onchange = () => { S.fam = mf.value; S.mp = 0; rerender(); };
+  const me = $('#mel'); if (me) me.onchange = () => { S.el = me.value; S.mp = 0; rerender(); };
+  document.querySelectorAll('th[data-sort]').forEach(th => th.onclick = () => { const k = th.dataset.sort; if (S.ms === k) S.md = -(S.md || 1); else { S.ms = k; S.md = k === 'nm' ? 1 : -1; } rerender(); });
+  document.querySelectorAll('[data-pg]').forEach(b => b.onclick = () => { S.mp = (S.mp || 0) + +b.dataset.pg; rerender(); document.querySelector('.doc').scrollIntoView(); });
+  const uq = $('#uq'); if (uq) uq.oninput = () => { S.uq = uq.value; rerender(); const n = $('#uq'); n.focus(); n.setSelectionRange(n.value.length, n.value.length); };
+}
+addEventListener('hashchange', () => { route(); scrollTo(0, 0); }); route();
+</script>
+</body>
+</html>
