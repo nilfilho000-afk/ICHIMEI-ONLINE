@@ -117,7 +117,7 @@ td.n{font-variant-numeric:tabular-nums;text-align:right}th.n{text-align:right}
   </nav>
 </div></header>
 <main id="app"></main>
-<footer><div class="wrap"><span>Ichimei Online · 一命 · versão 0.1.4</span><span>Uma torre. Cem andares. Uma vida.</span></div></footer>
+<footer><div class="wrap"><span>Ichimei Online · 一命 · versão 0.1.5</span><span>Uma torre. Cem andares. Uma vida.</span></div></footer>
 
 <script>
 const $ = s => document.querySelector(s), app = $('#app');
@@ -130,6 +130,8 @@ let D = null; const loadD = () => D ? Promise.resolve(D) : fetch('data/wiki.json
 const DL_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M6 11l6 6 6-6M4 21h16"/></svg>';
 const PLAY_URL = 'jogar/';
 const DL_BTN = (t) => `<a class="btn primary" href="IchimeiOnline.apk" download="IchimeiOnline.apk">${DL_ICON}${t || 'Baixar para Android'}</a>`;
+const WIN_ICON = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 5.5 10 4.5v7H3zM11 4.4 21 3v8.5H11zM3 12.5h7v7l-7-1zM11 12.5h10V21l-10-1.4z"/></svg>';
+const PC_BTN = `<a class="btn primary" href="IchimeiOnline.exe" download="IchimeiOnline.exe">${WIN_ICON}Baixar para Windows</a>`;
 const PLAY_BTN = `<a class="btn ghost" href="${PLAY_URL}" target="_blank" rel="noopener">Jogar no navegador</a>`;
 
 /* ---------- dados derivados ---------- */
@@ -170,8 +172,8 @@ P.inicio = () => `
   <img class="icon" src="img/icone.png" alt="Ícone do Ichimei Online">
   <div><div class="eyebrow">MMORPG 3D · Android · Navegador</div><h1>Ichimei Online</h1>
   <p class="lead">Uma torre de cem andares acima das nuvens. Cada andar tem sua cidade, seu chefe, suas masmorras e seus segredos. E você tem uma vida só.</p>
-  <div class="btns">${DL_BTN()}${PLAY_BTN}<a class="btn ghost" href="#/wiki">Abrir a wiki</a></div>
-  <div class="meta">Versão 0.1.4 · APK de 12 MB · Android 7 ou mais novo · joga offline</div></div>
+  <div class="btns">${DL_BTN()}${PC_BTN}${PLAY_BTN}<a class="btn ghost" href="#/wiki">Abrir a wiki</a></div>
+  <div class="meta">Versão 0.1.5 · Android (12 MB) e Windows 10/11 (20 MB) · joga offline</div></div>
 </div></div>
 <section class="band"><div class="wrap"><h2>O mundo</h2><p class="sub">Vilas com moradores que têm rotina própria, lagos cheios de vida, ruínas pelo campo e masmorras com salas secretas e portais.</p>
 <div class="gallery">
@@ -182,7 +184,7 @@ P.inicio = () => `
   <figure><img src="img/portal.jpg" alt="Portal" loading="lazy"><figcaption>Portais</figcaption></figure>
   <figure><img src="img/chefe.jpg" alt="Arena do chefe" loading="lazy"><figcaption>Um chefe por andar</figcaption></figure>
 </div></div></section>
-<section class="band"><div class="wrap"><h2>O que tem no jogo</h2><p class="sub">Tudo isso já está na versão 0.1.4. A wiki explica cada parte em detalhe.</p>
+<section class="band"><div class="wrap"><h2>O que tem no jogo</h2><p class="sub">Tudo isso já está na versão 0.1.5. A wiki explica cada parte em detalhe.</p>
 <div class="grid3">
   <a class="card" href="#/wiki/como-jogar"><h3>Uma vida só</h3><p>Morreu, acabou: seu nome vai para o Memorial. Cada luta pesa.</p></a>
   <a class="card" href="#/wiki/andares"><h3>100 andares</h3><p>Dez capítulos, dez biomas, cem cidades e cem chefes com história própria.</p></a>
@@ -193,10 +195,13 @@ P.inicio = () => `
 </div></div></section>
 <section class="band" id="baixar"><div class="wrap">${P.dlbox()}</div></section>`;
 P.dlbox = () => `<div class="dlbox"><div><h2>Baixar o Ichimei Online</h2><dl>
-  <dt>Versão</dt><dd>0.1.4 (modo offline)</dd><dt>Tamanho</dt><dd>12 MB</dd><dt>Requer</dt><dd>Android 7.0 ou mais novo, com WebGL</dd><dt>Multijogador</dt><dd>Em breve</dd><dt>SHA-256</dt><dd style="font-family:monospace;font-size:12px;word-break:break-all">1384264ac4506bce25af8898a9bf3f25bcbd7f169e645f4be0bc8ff41cc88409</dd></dl>
-  </div><div class="btns" style="flex-direction:column">${DL_BTN('Baixar APK')}${PLAY_BTN}</div>`;
+  <dt>Versão</dt><dd>0.1.5 (modo offline)</dd><dt>Android</dt><dd>7.0 ou mais novo · 12 MB</dd><dt>Windows</dt><dd>10 ou 11 · 20 MB · um arquivo só, sem instalar</dd><dt>Multijogador</dt><dd>Em breve</dd><dt>SHA-256 do APK</dt><dd style="font-family:monospace;font-size:12px;word-break:break-all">ae475f3f0767243735cc1de9192b082ec62dba42669621ba6b5075b4cf474c46</dd></dl>
+  </div><div class="btns" style="flex-direction:column">${DL_BTN('Baixar APK (Android)')}${PC_BTN}${PLAY_BTN}</div></div>`;
 P.baixar = () => `<section class="band"><div class="wrap">${P.dlbox()}
-<h2 style="margin-top:46px">Como instalar</h2><p class="sub">O jogo ainda não está na Play Store, então a instalação é direta pelo arquivo APK.</p>
+<h2 style="margin-top:46px">No PC (Windows)</h2><p class="sub">Dois jeitos, os dois jogam offline e guardam o progresso.</p>
+<div class="grid2"><div class="card"><h3>Programa para Windows</h3><p>Baixe o <b>IchimeiOnline.exe</b> e abra com dois cliques. É um arquivo só, não precisa instalar. Se o Windows mostrar “O Windows protegeu o computador”, clique em <b>Mais informações → Executar assim mesmo</b> (acontece com todo programa novo sem assinatura paga). Precisa do Edge WebView2, que já vem no Windows 10 e 11 atualizados. SHA-256: <code style="font-size:11px;word-break:break-all">7598c7afda2d73ba8618e902e645c98d3077797793a62a227e2fafeb1cec43bf</code></p></div>
+<div class="card"><h3>Instalar pelo navegador</h3><p>No Chrome ou no Edge, abra <a href="jogar/">Jogar no navegador</a> e clique em <b>Instalar no PC</b> (canto de cima da tela inicial do jogo) ou no ícone de instalar na barra de endereço. O jogo ganha atalho na área de trabalho e abre numa janela própria.</p></div></div>
+<h2 style="margin-top:46px">No celular (Android)</h2><p class="sub">O jogo ainda não está na Play Store, então a instalação é direta pelo arquivo APK.</p>
 <ol class="steps"><li><b>Baixe o APK</b><span>Toque em “Baixar APK” no celular.</span></li><li><b>Abra o arquivo</b><span>Pela notificação do download ou pelo app Arquivos.</span></li><li><b>Permita a instalação</b><span>Se o Android pedir, permita “instalar apps desconhecidos” para o navegador ou o app Arquivos.</span></li><li><b>Jogue</b><span>Toque em Instalar e abra o Ichimei Online. O jogo roda deitado, em tela cheia.</span></li></ol>
 <div class="note">Baixe só por este site: o app não pede nenhuma permissão e não acessa a internet. O Play Protect pode avisar que o app é de um desenvolvedor desconhecido. Isso acontece com todo app instalado fora da Play Store: toque em “Instalar mesmo assim”. No jogo, o botão voltar fecha menus; dois toques rápidos saem do jogo.</div>
 </div></section>`;
