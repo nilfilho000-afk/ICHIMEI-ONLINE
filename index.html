@@ -117,7 +117,7 @@ td.n{font-variant-numeric:tabular-nums;text-align:right}th.n{text-align:right}
   </nav>
 </div></header>
 <main id="app"></main>
-<footer><div class="wrap"><span>Ichimei Online · 一命 · versão 0.1.19</span><span>Uma torre. Cem andares. Uma vida.</span></div></footer>
+<footer><div class="wrap"><span>Ichimei Online · 一命 · versão 0.1.20</span><span>Uma torre. Cem andares. Uma vida.</span></div></footer>
 
 <script>
 const $ = s => document.querySelector(s), app = $('#app');
@@ -173,7 +173,7 @@ P.inicio = () => `
   <div><div class="eyebrow">MMORPG 3D · Android · Navegador</div><h1>Ichimei Online</h1>
   <p class="lead">Uma torre de cem andares acima das nuvens. Cada andar tem sua cidade, seu chefe, suas masmorras e seus segredos. E você tem uma vida só.</p>
   <div class="btns">${DL_BTN()}${PC_BTN}${PLAY_BTN}<a class="btn ghost" href="#/wiki">Abrir a wiki</a></div>
-  <div class="meta">Versão 0.1.19 · Android (12 MB) e Windows 10/11 (24 MB) · joga offline</div></div>
+  <div class="meta">Versão 0.1.20 · Android (12 MB) e Windows 10/11 (24 MB) · joga offline</div></div>
 </div></div>
 <section class="band"><div class="wrap"><h2>O mundo</h2><p class="sub">Vilas com moradores que têm rotina própria, lagos cheios de vida, ruínas pelo campo e masmorras com salas secretas e portais.</p>
 <div class="gallery">
@@ -184,7 +184,7 @@ P.inicio = () => `
   <figure><img src="img/portal.jpg" alt="Portal" loading="lazy"><figcaption>Portais</figcaption></figure>
   <figure><img src="img/chefe.jpg" alt="Arena do chefe" loading="lazy"><figcaption>Um chefe por andar</figcaption></figure>
 </div></div></section>
-<section class="band"><div class="wrap"><h2>O que tem no jogo</h2><p class="sub">Tudo isso já está na versão 0.1.19. A wiki explica cada parte em detalhe.</p>
+<section class="band"><div class="wrap"><h2>O que tem no jogo</h2><p class="sub">Tudo isso já está na versão 0.1.20. A wiki explica cada parte em detalhe.</p>
 <div class="grid3">
   <a class="card" href="#/wiki/como-jogar"><h3>Uma vida só</h3><p>Morreu, acabou: seu nome vai para o Memorial. Cada luta pesa.</p></a>
   <a class="card" href="#/wiki/andares"><h3>100 andares</h3><p>Dez capítulos, dez biomas, cem cidades e cem chefes com história própria.</p></a>
@@ -195,7 +195,7 @@ P.inicio = () => `
 </div></div></section>
 <section class="band" id="baixar"><div class="wrap">${P.dlbox()}</div></section>`;
 P.dlbox = () => `<div class="dlbox"><div><h2>Baixar o Ichimei Online</h2><dl>
-  <dt>Versão</dt><dd>0.1.19 (modo offline)</dd><dt>Android</dt><dd>7.0 ou mais novo · 12 MB</dd><dt>Windows</dt><dd>10 ou 11 · 24 MB · um arquivo só, sem instalar</dd><dt>Multijogador</dt><dd>Em breve</dd><dt>SHA-256 do APK</dt><dd style="font-family:monospace;font-size:12px;word-break:break-all">dd2b40060d01913ed4233cfd5287d38e2f5f5ae98a75ca65f63579932f099edb</dd></dl>
+  <dt>Versão</dt><dd>0.1.20 (modo offline)</dd><dt>Android</dt><dd>7.0 ou mais novo · 12 MB</dd><dt>Windows</dt><dd>10 ou 11 · 24 MB · um arquivo só, sem instalar</dd><dt>Multijogador</dt><dd>Em breve</dd><dt>SHA-256 do APK</dt><dd style="font-family:monospace;font-size:12px;word-break:break-all">594e780de754c421fc5047067abf88d41351394f91cc4fe622c0d578d11e71d9</dd></dl>
   </div><div class="btns" style="flex-direction:column">${DL_BTN('Baixar APK (Android)')}${PC_BTN}${PLAY_BTN}</div></div>`;
 P.baixar = () => `<section class="band"><div class="wrap">${P.dlbox()}
 <h2 style="margin-top:46px">No PC (Windows)</h2><p class="sub">Dois jeitos, os dois jogam offline e guardam o progresso.</p>
@@ -225,7 +225,7 @@ P['wiki:como-jogar'] = () => `<h1>Como jogar</h1><p class="lead">Você é um Des
 <li><b>Fale com o guia.</b> Ele conta o problema do andar e passa duas tarefas no campo: abater um tipo de monstro e juntar um material.</li>
 <li><b>Cumpra as tarefas no campo.</b> O mapa do andar (tecla <span class="kbd">M</span>) e o rastreador no canto da tela mostram o que falta.</li>
 <li><b>Volte ao guia.</b> Ele entrega a chave da masmorra.</li>
-<li><b>Ache a masmorra.</b> No primeiro andar ela não aparece no mapa: o guia só diz a direção, e ela fica longe da cidade. Ela só entra no mapa quando você passa perto. Nos andares seguintes, pergunte aos viajantes.</li>
+<li><b>Ache a masmorra.</b> Ela não aparece no mapa no começo, e a torre do andar fica escondida. Pergunte ao guia da cidade (no andar 1, a Cronista Olga): a opção “Onde fica a masmorra?” marca a entrada no mapa e na bússola. Ela também entra no mapa quando você passa perto.</li>
 <li><b>Atravesse a masmorra.</b> Cada sala limpa abre o portão da próxima. A passagem final está selada, e cada andar tem um jeito diferente de abrir (veja <a href="#/wiki/masmorras">Masmorras</a>).</li>
 <li><b>Derrote o chefe.</b> A escada para o próximo andar aparece na arena.</li></ol>
 <h2>Regras da torre</h2><ul>
@@ -289,7 +289,7 @@ P['wiki:historia'] = () => `<h1>História</h1><p class="lead">A Torre tem cem an
 ${D.CHAP.map((c, i) => `<h2>Capítulo ${i + 1} · ${esc(c.t)}</h2><p>${esc(c.d)}</p><p style="font-size:14px"><a href="#/wiki/andares/${i}">Andares ${i * 10 + 1} a ${i * 10 + 10}</a> · chefe final: ${esc(D.floors[i * 10 + 9].boss.name)}</p>`).join('')}`;
 
 P['wiki:masmorras'] = () => `<h1>Masmorras</h1><p class="lead">Cada andar tem uma masmorra principal, com o chefe no fundo, e masmorras opcionais espalhadas pelo campo.</p>
-<h2>Estrutura</h2><ul><li><b>Caminho principal:</b> de 6 a 8 salas em sequência. Cada sala limpa abre o portão vermelho da próxima.</li><li><b>Salas laterais:</b> 2 ou 3 salas sem saída, ligadas por corredores. Guardam o mecanismo do selo.</li><li><b>Sala do tesouro:</b> um baú e alguns monstros fora do caminho.</li><li><b>Passagem selada:</b> o último corredor até o chefe. Cada andar abre de um jeito.</li></ul>
+<h2>Estrutura</h2><ul><li><b>Caminho principal:</b> de 7 a 9 salas grandes em sequência. Cada sala limpa abre o portão vermelho da próxima.</li><li><b>Salas laterais:</b> 3 ou 4 salas sem saída, e metade continua para uma sala ainda mais funda. Guardam o mecanismo do selo (a alavanca fica sempre na mais funda).</li><li><b>Mapa:</b> só mostra as salas por onde você já passou. A arena do chefe só aparece quando o selo abre.</li><li><b>Passagem do chefe:</b> parece uma parede comum até o selo abrir.</li><li><b>Sala do tesouro:</b> um baú e alguns monstros fora do caminho.</li><li><b>Passagem selada:</b> o último corredor até o chefe. Cada andar abre de um jeito.</li></ul>
 <h2>Como abrir a sala do chefe</h2><p>O jeito muda a cada andar, num ciclo de quatro.</p><div class="grid2">${Object.entries(DGV_T).map(([k, [n, d]], i) => `<div class="card"><h3>${n}</h3><p>${d}</p><p style="margin-top:8px;color:var(--muted);font-size:14px">Andares ${i + 1}, ${i + 5}, ${i + 9}…</p></div>`).join('')}</div>
 <h2>Tipos de sala</h2><div class="tblwrap"><table><thead><tr><th>Sala</th><th>O que tem</th></tr></thead><tbody>
 <tr><td><b>Combate</b></td><td>Um grupo de monstros da masmorra. Do andar 4 em diante, também um monstro pesado.</td></tr>
@@ -297,6 +297,7 @@ P['wiki:masmorras'] = () => `<h1>Masmorras</h1><p class="lead">Cada andar tem um
 <tr><td><b>Armadilha</b></td><td>Espinhos que sobem do chão em dois grupos alternados, a cada 2,6 s.</td></tr>
 <tr><td><b>Placas de pressão</b></td><td>Do andar 2 em diante. A saída só abre com as 4 placas dos cantos pisadas e a sala limpa. Cada placa acorda um monstro.</td></tr>
 <tr><td><b>Tesouro</b></td><td>Baú do andar, guardado por um monstro raro.</td></tr>
+<tr><td><b>Cofre selado</b></td><td>Em alguns andares, a partir do 3 (3, 6, 10, 11, 13, 16, 20…). Brilho dourado dentro e luz vermelha na porta. Chegando perto, aparece o aviso. Entrou, a porta vira parede e vêm duas levas de monstros de 25 a 30 andares acima, a segunda com um campeão. Vencendo, o baú aparece: ouro ×4, um item de uns 12 andares acima e 45% de chance de uma <b>relíquia do Cofre Selado</b>.</td></tr>
 <tr><td><b>Sala secreta</b></td><td>Atrás de uma parede rachada. Perto dela, uma corrente de ar fria avisa. Tem um baú melhor, moedas e um portal de volta à entrada.</td></tr></tbody></table></div>
 <h2>Portais</h2><div class="grid3"><div class="card"><h3 style="color:#9dff8a">Verde · atalho</h3><p>Fica no fundo do caminho principal. Ao chegar perto, ele acende o par na entrada, e você pode ir e voltar na hora.</p></div><div class="card"><h3 style="color:var(--cyan)">Azul · retorno</h3><p>Na sala secreta. Leva de volta à entrada.</p></div><div class="card"><h3 style="color:#b48aff">Roxo · arena</h3><p>Nos andares com a mecânica de portal. Liga uma sala lateral à arena do chefe.</p></div></div>
 <h2>Armadilhas de corredor</h2><p>Todo corredor tem espinhos no chão. A partir do andar 12, e nos labirintos, aparecem dois por corredor.</p>
@@ -327,6 +328,7 @@ P['wiki:monstro'] = (id) => { const m = D.mobs[id]; if (!m) return '<p class="em
   ${m[11] ? `<dt>Item único</dt><dd>${esc(m[11][1])} (${esc(SLOT_NM[m[11][0]] || m[11][0])}) ${rarTag(m[11][2])} · chance de ${(m[11][3] * 100).toLocaleString('pt-BR', { maximumFractionDigits:1 })}%</dd>` : ''}</dl>`; };
 
 P['wiki:chefes'] = () => `<h1>Chefes</h1><p class="lead">Um chefe por andar, no fundo da masmorra principal. O último de cada capítulo é um chefe de capítulo. Todo chefe deixa cair dois itens únicos garantidos.</p>
+<h2>Como a luta funciona</h2><ul><li><b>A sala tranca.</b> Ao entrar na arena sobe uma parede de fogo. Não dá para sair nem usar o pergaminho de retorno até o chefe morrer.</li><li><b>O chefe acompanha você.</b> Ele nasce com força calculada pelo seu ataque, crítico e vida: quanto mais forte você estiver, mais forte ele vem. Nunca fica mais fraco do que o andar pede.</li><li><b>Não fique colado.</b> De perto ele alterna varredura na frente e pisão em volta, sempre com aviso no chão.</li><li><b>Fases.</b> A 60% de vida ele se enfurece e ganha golpes novos; a 25% entra na fase final, mais rápido e mais forte. O chefe de cada 10 andares muda a 70% e 35%.</li><li><b>Subir não tem volta.</b> A escada pede confirmação.</li><li><b>Chefe de campo</b> (evento com estrela no mapa) também acompanha o seu nível, um pouco mais fraco que o do andar.</li></ul>
 <div class="tblwrap"><table><thead><tr><th class="n">Andar</th><th>Chefe</th><th>Traços</th><th>Itens únicos</th></tr></thead><tbody>${D.floors.map(f => `<tr><td class="n"><a href="#/wiki/andar/${f.f}">${f.f}</a></td><td><b>${esc(f.boss.name)}</b>${f.boss.chief ? ' <span class="tag">capítulo</span>' : ''}</td><td>${elTag(f.boss.el)}${f.boss.affs.map(affxTag).join('')}</td><td>${f.boss.uq.map(u => esc(u.name)).join('<br>')}</td></tr>`).join('')}</tbody></table></div>`;
 
 P['wiki:missoes'] = () => `<h1>Missões</h1><p class="lead">Quatro tipos de missão: a principal de cada andar, pedidos de moradores, eventos que acontecem na cidade e segredos escondidos no campo.</p>
@@ -340,6 +342,7 @@ P['wiki:missoes'] = () => `<h1>Missões</h1><p class="lead">Quatro tipos de miss
 <h2>Eventos do mundo</h2><div class="grid3">${Object.values(D.EVN).map(n => `<div class="card"><h3>${esc(n)}</h3><p>${({ 'Chefe de campo':'Um monstro poderoso aparece no campo por um tempo.', 'Invasão noturna':'À noite, monstros atacam as bordas da cidade.', 'Caravana':'Uma caravana atravessa o campo e precisa de escolta.' })[n] || ''}</p></div>`).join('')}</div>`;
 
 P['wiki:itens'] = () => `<h1>Itens</h1><p class="lead">Equipamentos têm encaixe, raridade, tema e propriedades extras.</p>
+<h2>Relíquias do Cofre Selado</h2><p>Só saem do baú dos cofres selados das masmorras (45% de chance por cofre). Força de raro ou épico, com bônus de sorte, e visual próprio: obsidiana com filetes de ouro, chave dourada e gema roxa. Não aparecem em loja, drop nem forja.</p>
 <h2>Raridades</h2><div class="tblwrap"><table><thead><tr><th>Raridade</th><th class="n">Força</th></tr></thead><tbody>${D.RAR.map((r, i) => `<tr><td>${rarTag(i)}</td><td class="n">×${r.m.toLocaleString('pt-BR')}</td></tr>`).join('')}</tbody></table></div>
 <h2>Encaixes</h2><div class="tblwrap"><table><thead><tr><th>Encaixe</th><th>Propriedades possíveis</th></tr></thead><tbody>${D.SLOTS.map(s => `<tr><td><b>${SLOT_NM[s]}</b></td><td>${(D.SL_AFF[s] || []).map(affTag).join('')}</td></tr>`).join('')}</tbody></table></div>
 <h2>Tipos de arma</h2><div class="tblwrap"><table><thead><tr><th>Arma</th><th>Estilo</th><th class="n">Alcance</th><th class="n">Dano</th></tr></thead><tbody>${D.WTK.map(k => { const w = D.WT[k]; return `<tr><td><b>${esc(w.n)}</b><br><span style="font-size:13px;color:var(--muted)">${w.names.map(esc).join(', ')}</span></td><td>${esc(w.d)}</td><td class="n">${w.range} m</td><td class="n">×${w.mult}</td></tr>`; }).join('')}</tbody></table></div>
